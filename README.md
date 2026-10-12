@@ -1,11 +1,10 @@
 # Portfolio site (GitHub Pages)
 
-Static portfolio for the foam research project. Published with GitHub Pages from the repository root.
+Static portfolio for the foam research project.
 
-- `index.html` — portfolio page; the reports open in an in-page popup.
-- `reports/` — self-contained research report and explainer (English) (copied from the
-  project's `presentation/` folder).
-- `assets/` — preview image and figures from `results_package/`.
+- `index.html` — portfolio page with the 20-second overview video, key results, process timeline and contributions.
+- `reports/research-summary.html` — one-page research summary (opens in a popup).
+- `reports/foam-two-studies.html` — explainer comparing this project with Cho et al. (2022) (opens in a popup).
+- `assets/` — shared stylesheet, figures, video and self-hosted fonts (SIL OFL 1.1).
 
-Deep links: `#report` (research report) and `#two-studies` (explainer)
-open the popup directly.
+Deep links: `#summary` and `#two-studies` open the popups directly.
