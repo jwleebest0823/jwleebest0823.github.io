@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>J. W. Lee — Foam Research</title>
-<meta name="description" content="Research portfolio: tracking bubbles in three evaporating soap foams to test von Neumann's law of foam coarsening.">
-<meta property="og:title" content="J. W. Lee — Foam Research">
+<title>Finding order inside foam: Physics-Informed Graph Neural Network incorporating Biomedical Image Segmentation Foundation Model — Jongwoo Lee</title>
+<meta name="description" content="Jongwoo Lee's research portfolio: tracking bubbles in three evaporating soap foams, detected with the Cellpose-SAM segmentation model, to test von Neumann's law of foam coarsening.">
+<meta property="og:title" content="Finding order inside foam: Physics-Informed Graph Neural Network incorporating Biomedical Image Segmentation Foundation Model">
 <meta property="og:description" content="Tracking bubbles in three evaporating soap foams to test a 1952 law of foam coarsening.">
 <meta property="og:image" content="assets/video-poster.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1a1f'/%3E%3Cg fill='none' stroke='%238fd6b4' stroke-width='3'%3E%3Ccircle cx='24' cy='26' r='11'/%3E%3Ccircle cx='42' cy='24' r='8'/%3E%3Ccircle cx='38' cy='42' r='10'/%3E%3C/g%3E%3C/svg%3E">
@@ -15,6 +15,7 @@
 .hero .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 52px; align-items: center; }
 .hero h1 { font-size: clamp(40px, 6vw, 64px); letter-spacing: -.01em; }
 .hero h1 em { color: var(--accent); }
+.hero h1 .subtitle { display: block; font-size: clamp(19px, 2.1vw, 24px); line-height: 1.4; color: var(--muted); margin-top: 16px; letter-spacing: 0; }
 .hero .lede { font-size: 19px; margin: 22px 0 30px; }
 .video-card { margin: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #0b1a1f; box-shadow: var(--shadow); }
 .video-card video { width: 100%; height: auto; aspect-ratio: 16 / 9; background: #0b1a1f; }
@@ -36,7 +37,7 @@
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top">J. W. Lee</a>
+    <a class="brand" href="#top">Jongwoo Lee</a>
     <ul>
       <li><a href="#results">Results</a></li>
       <li><a href="#process">Process</a></li>
@@ -51,17 +52,13 @@
     <div class="wrap">
       <div>
         <p class="eyebrow">Research portfolio · Soft-matter physics &amp; computation</p>
-        <h1>Finding order inside <em>foam.</em></h1>
-        <p class="lede">I tracked individual bubbles in three evaporating soap foams to test a 1952 law of foam coarsening. Along the way I found and fixed the measurement errors that had made the law look wrong.</p>
+        <h1>Finding order inside <em>foam:</em><span class="subtitle">Physics-Informed Graph Neural Network incorporating Biomedical Image Segmentation Foundation Model</span></h1>
+        <p class="lede">I tracked individual bubbles in three evaporating soap foams to test a 1952 law of foam coarsening, using a cell-segmentation foundation model (Cellpose-SAM) to find the bubbles and a graph of their contacts to count neighbours. Along the way I found and fixed the measurement errors that had made the law look wrong.</p>
         <div class="actions">
           <button class="btn primary" type="button" data-open="summary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>
             Read the research summary
           </button>
-          <a class="btn" href="#results">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-            Key results
-          </a>
         </div>
       </div>
       <figure class="video-card">
@@ -77,11 +74,11 @@
   <section id="results">
     <div class="wrap">
       <p class="eyebrow">Results</p>
-      <h2>Von Neumann’s law holds in sign in all three foams</h2>
+      <h2>All three foams agree in sign with von Neumann’s law</h2>
       <dl class="qmr">
         <div><dt>Question</dt><dd>Does a bubble’s number of neighbours <i>n</i> set how fast it grows, as von Neumann’s law <span class="mono">dA/dt = K(n − 6)</span> predicts?</dd></div>
-        <div><dt>Method</dt><dd>In time-lapses of three foams recorded in Dr. Oh’s lab, I outlined and tracked every bubble, counted its neighbours and fitted <i>K</i> with a median-based estimator. I checked detection against 14 hand-labelled frames and tested prediction models on foams left out of training.</dd></div>
-        <div><dt>Result</dt><dd><i>K</i> was positive, with its 95% interval above zero, in all nine foam × time-interval tests: for Foam A, 0.367 px²/s [0.333, 0.400] at Δt = 30 s. The law also predicted bubble growth better than a graph neural network in 8 of 9 held-out tests.</dd></div>
+        <div><dt>Method</dt><dd>In time-lapses of three foams recorded in Dr. Oh’s lab, I outlined every bubble with Cellpose-SAM, tracked it from frame to frame, counted its neighbours from a contact graph and fitted <i>K</i> with a median-based estimator. I checked detection against 14 hand-labelled Foam A frames and tested prediction models on foams left out of training.</dd></div>
+        <div><dt>Result</dt><dd><i>K</i> was positive, with its 95% interval above zero, in all nine foam × time-interval tests: for Foam A, 0.367 px²/s [0.333, 0.400] at Δt = 30 s. A graph neural network did not predict bubble growth better than the law, which was the best model in 8 of 9 held-out tests.</dd></div>
       </dl>
       <div class="split">
         <figure class="fig">
@@ -89,7 +86,7 @@
           <figcaption><b>K is positive at every time interval in every foam.</b> Each foam is measured over the same physical intervals (30, 150 and 600 s); bars are 95% intervals.</figcaption>
         </figure>
         <div>
-          <p class="lede" style="margin-top:30px"><i>K</i> is not a fixed constant of each foam, though. It rose 1.5× over Foam A’s life, fell 1.5× over Foam C’s, and was negative while Foam F was still wet. On Foam A the detector matched the hand labels closely (F1 0.966; mean neighbour count within 0.03).</p>
+          <p class="lede" style="margin-top:30px">Whether <i>K</i> changes over a foam’s life is not settled: Foam A’s apparent 1.5× rise appears with one fitting method but not when bubble size is added to the fit, and the apparent trends in Foams C and F did not survive stricter tests. On Foam A the detector closely matched the hand labels (F1 0.966; over all bubbles, mean neighbour count within 0.03).</p>
           <p class="note"><b>What this does not show.</b> Detection accuracy is measured only on Foam A. With no scale bar, <i>K</i> is in px²/s and the three foams are not compared in size. The research summary lists every limitation.</p>
           <div class="actions"><button class="btn" type="button" data-open="summary">Full results and limitations →</button></div>
         </div>
@@ -110,12 +107,14 @@
           <li class="setback"><time>July 27</time><p><b>Found that tracking merged bubbles and never split them back;</b> withdrew a tracking-quality headline built on it.</p></li>
           <li><time>August 3</time><p>Labelled 14 frames by hand. Liquid channels were being counted as bubbles; removing them raised detection F1 from 0.515 to 0.899.</p></li>
           <li class="setback"><time>August 6–7</time><p><b>Audit: withdrew a “neural network beats physics” result</b> trained on rejected data, and traced K = −1.74 to the least-squares estimator.</p></li>
-          <li><time>August 13</time><p>Ran one detector (Cellpose) on all three foams: K positive in all three.</p></li>
+          <li><time>August 13</time><p>Ran one detector (Cellpose-SAM) on all three foams: K positive in all three.</p></li>
           <li><time>August 22</time><p>All 22 detected neighbour swaps checked by eye: no false positives.</p></li>
-          <li><time>September 2–6</time><p>Matched time intervals in seconds across foams, and found that K changes over each foam’s life.</p></li>
+          <li><time>September 2–6</time><p>Matched time intervals in seconds across foams, and saw K appear to change over each foam’s life.</p></li>
           <li class="setback"><time>September 18</time><p><b>Verification pass: withdrew several claims</b> about edge effects, bubble roundness and junction size.</p></li>
           <li><time>September 21</time><p>Wrote down a spatial test plan before running the test.</p></li>
-          <li><time>October 9</time><p>Recomputed every reported number from one set of scripts.</p></li>
+          <li><time>October 9</time><p>Re-checked every reported number against the script that produces it.</p></li>
+          <li class="setback"><time>October 18</time><p><b>Stricter tests: Foam F’s apparent sign change and Foam C’s apparent fall did not hold up;</b> Foam A’s rise did.</p></li>
+          <li class="setback"><time>October 25</time><p><b>Foam A’s rise disappeared when bubble size was added to the fit,</b> so it is now reported as unsettled.</p></li>
         </ol>
         <figure class="fig">
           <button class="zoom" type="button" aria-label="Enlarge: the July apparent failure"><img src="assets/fig-july-apparent-failure.png" width="960" height="660" loading="lazy" alt="July 2026 plot: Foam F's fitted K is negative, about minus 1.74 at a 10-second interval, with intervals reaching above zero."></button>
@@ -145,15 +144,9 @@
 
   <section id="more">
     <div class="wrap">
-      <p class="eyebrow">Read more</p>
-      <h2>Two short pages</h2>
-      <div class="cards" style="margin-top:28px">
-        <button class="card" type="button" data-open="summary">
-          <span class="kind">Research summary</span>
-          <h3>Finding order inside foam</h3>
-          <p>The question, method, results with figures, limitations and references, on one page.</p>
-          <span class="go">Open →</span>
-        </button>
+      <p class="eyebrow">For non-specialists</p>
+      <h2>How this work relates to the prior study</h2>
+      <div class="cards" style="margin-top:28px;grid-template-columns:1fr;max-width:620px">
         <button class="card" type="button" data-open="two-studies">
           <span class="kind">Explainer</span>
           <h3>Two questions on a bubble tray</h3>
@@ -161,17 +154,13 @@
           <span class="go">Open →</span>
         </button>
       </div>
-      <div class="actions" style="margin-top:28px">
-        <a class="btn" href="https://github.com/jwleebest0823" target="_blank" rel="noopener">GitHub profile ↗</a>
-      </div>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>© 2026 J. W. Lee</span>
-    <span>Data: Dr. Oh’s lab · Analysis: J. W. Lee</span>
+    <span>© 2026 Jongwoo Lee</span>
   </div>
 </footer>
 
@@ -199,8 +188,8 @@
 <script>
 (function () {
   var DOCS = {
-    "summary":     { src: "reports/research-summary.html?v=20261012",  title: "Research summary" },
-    "two-studies": { src: "reports/foam-two-studies.html?v=20261012",  title: "Two questions on a bubble tray" }
+    "summary":     { src: "reports/research-summary.html?v=20261026",  title: "Research summary" },
+    "two-studies": { src: "reports/foam-two-studies.html?v=20261026",  title: "Two questions on a bubble tray" }
   };
   var ALIASES = { "report": "summary" };  // old links to #report keep working
   var viewer = document.getElementById("viewer");
